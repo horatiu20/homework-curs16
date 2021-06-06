@@ -2,7 +2,7 @@ package exercitiu;
 
 import java.util.Objects;
 
-public abstract class GenericShop<T extends ShopItem> implements ShopItem{
+public abstract class GenericShop<T extends ShopItem>{
 	private final T object;
 
 	public GenericShop(T object) {

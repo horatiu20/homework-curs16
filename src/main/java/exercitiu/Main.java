@@ -25,11 +25,7 @@ Shop are următoarele metode:
 
 public class Main {
 	public static void main(String[] args) {
-//		addItem(T item);
-//		findByCategory(Category cat);
-//		findWithLowerPrice( int maxPrice);
-//		findByName(String name);
-//		removeItem(String name);
+
 	}
 
 }
