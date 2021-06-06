@@ -21,7 +21,7 @@ Shop are următoarele metode:
 	findByCategory(Category cat): List<T>
 	findWithLowerPrice(int maxPrice) : List<T>
 	findByName(String name) : Optional<T>
-	removeItem(String name): Optional<T>*/
+	removeItem(String name): Optional<T> */
 
 public class Main {
 }
