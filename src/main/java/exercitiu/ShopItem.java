@@ -1,10 +1,9 @@
 package exercitiu;
 
 public interface ShopItem {
-	void getName(String name);
+	String getName();
 
-	void getPrice(int price);
+	int getPrice();
 
-	void getCategory(Category category);
-
+	Category getCategory();
 }

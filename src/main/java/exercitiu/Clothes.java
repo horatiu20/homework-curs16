@@ -12,17 +12,17 @@ public class Clothes implements ShopItem {
 	}
 
 	@Override
-	public void getName(String name) {
-		System.out.println(name);
+	public String getName() {
+		return this.name;
 	}
 
 	@Override
-	public void getPrice(int price) {
-		System.out.println(price);
+	public int getPrice() {
+		return this.price;
 	}
 
 	@Override
-	public void getCategory(Category category) {
-		System.out.println(category);
+	public Category getCategory() {
+		return this.category;
 	}
 }

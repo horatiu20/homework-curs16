@@ -1,35 +1,89 @@
 package exercitiu;
 
-import java.util.Objects;
+/*Creați o interfață ShopItem:
+	ShopItem
+        String name()
+        int price()
+        Category category().
+Category este un enum: ON_SALE, NEW, REFURBISHED.
+Creați implementările:
+	Clothes
+	Electronics
+	Fruits.
+Creați un Shop GENERIC care are o lista de obiecte care implementează ShopItem
+definiția clasei Shop care lucrează doar cu ShopItem este:
+	public class Shop<T extends ShopItem>
+astfel obiectele din T vor putea accesa metodele din ShopItem. (de exemplu getCategory pt findByCategory).
+Odata creat Shop-ul, va primi doar elemente de acel tip.
+	Shop<Clothes> va avea doar haine.
 
-public abstract class GenericShop<T extends ShopItem>{
-	private final T object;
+Shop are următoarele metode:
+	addItem(T item)
+	findByCategory(Category cat): List<T>
+	findWithLowerPrice(int maxPrice): List<T>
+	findByName(String name): Optional<T>
+	removeItem(String name): Optional<T> */
 
-	public GenericShop(T object) {
-		this.object = object;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+
+public class GenericShop<T extends ShopItem> {
+	private final List<T> items = new ArrayList<>();
+
+	public GenericShop(Collection<T> item) {
+		if (item != null) {
+			this.items.addAll(item);
+		}
 	}
 
-	public T getObject() {
-		return object;
+	public Optional<T> addItem(T item) {
+		for (T clothes : items) {
+			items.add(clothes);
+			return Optional.of(clothes);
+		}
+		return Optional.empty();
 	}
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		GenericShop<?> that = (GenericShop<?>) o;
-		return Objects.equals(object, that.object);
+	public List<T> findByCategory(Category cat) {
+		List<T> result = new ArrayList<>();
+		for (T clothes : items) {
+			if (clothes.getCategory() == cat) {
+				result.add(clothes);
+			}
+		}
+		return result;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(object);
+	public List<T> findWithLowerPrice(int maxPrice) {
+		List<T> result = new ArrayList<>();
+		for (T clothes : items) {
+			if (clothes.getPrice() < maxPrice) {
+				maxPrice = clothes.getPrice();
+				result.add(clothes);
+			}
+		}
+		return result;
 	}
 
-	@Override
-	public String toString() {
-		return "GenericShop{" +
-				"object=" + object +
-				'}';
+	public Optional<T> findByName(String name) {
+		for (T clothes : items) {
+			if (clothes.getName().equals(name)) {
+				items.add(clothes);
+				return Optional.of(clothes);
+			}
+		}
+		return Optional.empty();
+	}
+
+	public Optional<T> removeItem(String name) {
+		for (T clothes : items) {
+			if (clothes.getName().equals(name)) {
+				items.remove(clothes);
+				return Optional.of(clothes);
+			}
+		}
+		return Optional.empty();
 	}
 }
