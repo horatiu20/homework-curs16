@@ -39,18 +39,18 @@ public class GenericShop<T extends ShopItem> {
 	}
 
 	public Optional<T> addItem(T item) {
-		for (T clothes : items) {
-			items.add(clothes);
-			return Optional.of(clothes);
+		for (T all : items) {
+			items.add(all);
+			return Optional.of(all);
 		}
 		return Optional.empty();
 	}
 
 	public List<T> findByCategory(Category cat) {
 		List<T> result = new ArrayList<>();
-		for (T clothes : items) {
-			if (clothes.getCategory() == cat) {
-				result.add(clothes);
+		for (T all : items) {
+			if (all.getCategory() == cat) {
+				result.add(all);
 			}
 		}
 		return result;
@@ -58,30 +58,30 @@ public class GenericShop<T extends ShopItem> {
 
 	public List<T> findWithLowerPrice(int maxPrice) {
 		List<T> result = new ArrayList<>();
-		for (T clothes : items) {
-			if (clothes.getPrice() < maxPrice) {
-				maxPrice = clothes.getPrice();
-				result.add(clothes);
+		for (T all : items) {
+			if (all.getPrice() < maxPrice) {
+				maxPrice = all.getPrice();
+				result.add(all);
 			}
 		}
 		return result;
 	}
 
 	public Optional<T> findByName(String name) {
-		for (T clothes : items) {
-			if (clothes.getName().equals(name)) {
-				items.add(clothes);
-				return Optional.of(clothes);
+		for (T all : items) {
+			if (all.getName().equals(name)) {
+				items.add(all);
+				return Optional.of(all);
 			}
 		}
 		return Optional.empty();
 	}
 
 	public Optional<T> removeItem(String name) {
-		for (T clothes : items) {
-			if (clothes.getName().equals(name)) {
-				items.remove(clothes);
-				return Optional.of(clothes);
+		for (T all : items) {
+			if (all.getName().equals(name)) {
+				items.remove(all);
+				return Optional.of(all);
 			}
 		}
 		return Optional.empty();
