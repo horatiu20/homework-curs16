@@ -12,7 +12,7 @@ class GenericShopTest {
 	GenericShop<Clothes> genericShop;
 
 	@Test
-	@DisplayName("WHEN an item is added THEN it is printed")
+	@DisplayName("WHEN an object is added THEN it is printed")
 	void addItem() {
 		genericShop = new GenericShop<Clothes>(List.of(
 				new Clothes("T-shirt", 100, Category.NEW),
@@ -46,9 +46,7 @@ class GenericShopTest {
 				new Clothes("socks", 10, Category.REFURBISHED)
 		));
 		// ceva nu merge aici...
-		assertThat(genericShop.findWithLowerPrice(80)).isEqualTo(List.of(
-				new Clothes("pants", 50, Category.ON_SALE),
-				new Clothes("socks", 10, Category.REFURBISHED)));
+		assertThat(genericShop.findWithLowerPrice(80)).isEqualTo(new Clothes("socks", 10, Category.REFURBISHED));
 	}
 
 	@Test
