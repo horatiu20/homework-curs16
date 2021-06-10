@@ -44,8 +44,10 @@ class GenericShopTest {
 				new Clothes("pants", 50, Category.ON_SALE),
 				new Clothes("socks", 10, Category.REFURBISHED)
 		));
-		// ceva nu merge aici...
-		assertThat(genericShop.findWithLowerPrice(80)).isEqualTo(new Clothes("socks", 10, Category.REFURBISHED));
+
+		assertThat(genericShop.findWithLowerPrice(80)).isEqualTo(List.of(
+				new Clothes("pants", 50, Category.ON_SALE),
+				new Clothes("socks", 10, Category.REFURBISHED)));
 	}
 
 	@Test

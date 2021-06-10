@@ -60,7 +60,6 @@ public class GenericShop<T extends ShopItem> {
 		List<T> result = new ArrayList<>();
 		for (T all : items) {
 			if (all.getPrice() < maxPrice) {
-				maxPrice = all.getPrice();
 				result.add(all);
 			}
 		}
